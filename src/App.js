@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Projects from "./components/Projects";
-import BlogList from "./components/BlogList";
+// import Projects from "./components/Projects";
+// import BlogList from "./components/BlogList";
 // import BlogPost from "./components/BlogPost";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -34,7 +34,7 @@ const App = () => {
         <div className="container mx-auto max-w-5xl my-10">
           <Navbar />
           <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
+            <Route path="/" element={<Home />} />
             {/* <Route path="/projects" element={<Projects />} /> */}
             {/* <Route path="/blog" element={<BlogList />} /> */}
             {/* <Route path="/blog/:id" element={<BlogPost />} /> */}
