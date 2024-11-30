@@ -3,9 +3,9 @@ import { Download } from 'lucide-react';
 // About Section with Psychology-Driven Design
 const About = () => {
     const achievements = [
-      { label: 'Years Experience', value: '4+', icon: '⏳' },
-      { label: 'Projects Completed', value: '50+', icon: '🎯' },
-      { label: 'Happy Clients', value: '20+', icon: '😊' },
+      { label: 'Years Experience', value: '2+', icon: '⏳' },
+      { label: 'Projects Completed', value: '20+', icon: '🎯' },
+      { label: 'Happy Clients', value: '10+', icon: '😊' },
       { label: 'Support', value: '24/7', icon: '🔧' }
     ];
   
@@ -33,7 +33,7 @@ const About = () => {
                 >
                   <span className="text-3xl">👨‍💻</span>
                   <div>
-                    <p className="font-semibold">4+ Years</p>
+                    <p className="font-semibold">2+ Years</p>
                     <p className="text-sm text-gray-600">of Experience</p>
                   </div>
                 </motion.div>

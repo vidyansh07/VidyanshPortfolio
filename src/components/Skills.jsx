@@ -14,14 +14,14 @@ const Skills = () => {
     {
       title: 'Backend Development',
       description: 'Building robust server architectures',
-      skills: ['Node.js', 'Python', 'FastAPI', 'PostgreSQL', 'MongoDB'],
+      skills: ['Django', 'FastAPI', 'Node.js',  'PHP', 'DBMS'],
       icon: '⚙️',
       color: 'bg-green-500'
     },
     {
-      title: 'Mobile Development',
+      title: 'Languages And Tools',
       description: 'Crafting native mobile experiences',
-      skills: ['React Native', 'Flutter', 'iOS', 'Android', 'Firebase'],
+      skills: ["Python", "Javascript", "Containerisation", "AWS", "Go"],
       icon: '📱',
       color: 'bg-purple-500'
     }
@@ -71,8 +71,8 @@ const Skills = () => {
                     <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                       <motion.div
                         className={`h-full ${category.color} opacity-75`}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${85 + (skillIndex * 3)}%` }}
+                        initial={{ width: 100 }}
+                        whileInView={{ width: `${90 - (skillIndex * 4)}%` }}
                         transition={{ duration: 1, delay: skillIndex * 0.1 }}
                       />
                     </div>

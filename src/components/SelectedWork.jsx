@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { image } from 'framer-motion/client';
 // import { ExternalLink, GitHub, ArrowRight } from 'lucide-react';
 
 const ProjectCard = ({ project, index }) => {
@@ -85,30 +86,30 @@ const SelectedWork = () => {
       title: "Ecoclean",
       description: "A comprehensive project management solution with real-time updates and team collaboration features.",
       image: "https://images.pexels.com/photos/18794597/pexels-photo-18794597/free-photo-of-sanitation-worker-leaning-on-a-garbage-truck.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "https://project-manager.example.com",
+      link: "https://github.com/vidyansh07/EcoClean",
       github: "https://github.com/username/project-manager",
-      technologies: ["React", "Node.js", "MongoDB"]
+      technologies: ["Python", "Api", "Django"]
     },
     {
-      title: "AI Analytics Dashboard",
-      description: "Interactive analytics platform powered by AI for data-driven insights and decision making.",
-      image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "https://ai-analytics.example.com",
-      technologies: ["Python", "TensorFlow", "React"]
+      title: "Movie Recommendor System",
+      description: "Modern movie remmendor system to integrate and can be used in different Projects.",
+      image:"https://images.pexels.com/photos/3137890/pexels-photo-3137890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      link: "https://github.com/vidyansh07/Movie-Recommender-System",
+      technologies: ["Python", "TensorFlow", "Sklearn"]
     },
     {
-      title: "E-commerce Platform",
-      description: "Modern e-commerce solution with advanced product management and payment integration.",
-      image: "https://images.pexels.com/photos/7621355/pexels-photo-7621355.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "https://ecommerce.example.com",
-      technologies: ["Next.js", "Stripe", "PostgreSQL"]
+      title: "Everything About Python Projects",
+      description: "Modern Python Projects with all the details and code.",
+      image: "https://images.pexels.com/photos/10816120/pexels-photo-10816120.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      link: "https://github.com/vidyansh07/python-learning-projects",
+      technologies: ["Python", "Tools", "Databases"]
     },
     {
       title: "Social Media App",
       description: "Feature-rich social media application with real-time messaging and content sharing.",
       image: "https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "https://social.example.com",
-      technologies: ["React Native", "Firebase", "Redux"]
+      link: "https://github.com/vidyansh07/Social-book",
+      technologies: ["Django", "Bootstrap", "Sqlite", "python"]
     }
   ];
 

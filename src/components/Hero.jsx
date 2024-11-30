@@ -13,7 +13,7 @@ const Hero = () => {
         </p>
         <button
           className="relative gradient-border m-1 px-3 py-2 rounded-xl flex items-center justify-center bg-black hover:bg-white hover:text-black opacity-95 hover:opacity-100 text-white mt-5 px-5 py-3 md:px-8 md:py-3 text-xl"
-          onClick={() => window.location.href = 'mailto:your-email@example.com'}
+          onClick={() => window.location.href = 'mailto:vidyansht@gmail.com'}
         >
           Book a Free Discovery Call
         </button>

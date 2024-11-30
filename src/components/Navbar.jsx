@@ -3,20 +3,20 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = [
-    { path: "/", label: "Home" },
-    { path: "/projects", label: "Projects" },
-    { path: "/blog", label: "Blog" },
-    { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" },
-  ];
+  // const menuItems = [
+  //   { path: "/", label: "Home" },
+  //   { path: "/projects", label: "Projects" },
+  //   { path: "/blog", label: "Blog" },
+  //   { path: "/about", label: "About" },
+  //   { path: "/contact", label: "Contact" },
+  // ];
 
   return (
     <div className="flex items-center justify-between px-2 xl:px-0">
       <Link className="font-bold" to="/">
         vidyansh tripathi
       </Link>
-      <div className="hidden md:flex items-center space-x-6">
+      {/* <div className="hidden md:flex items-center space-x-6">
         {menuItems.map((item) => (
           <Link
             key={item.path}
@@ -26,7 +26,7 @@ const Navbar = () => {
             {item.label}
           </Link>
         ))}
-      </div>
+      </div> */}
       <div className="relative md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -50,7 +50,7 @@ const Navbar = () => {
         </button>
         {isMenuOpen && (
           <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-            {menuItems.map((item) => (
+            {/* {menuItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
@@ -59,7 +59,7 @@ const Navbar = () => {
               >
                 {item.label}
               </Link>
-            ))}
+            ))} */}
           </div>
         )}
       </div>
