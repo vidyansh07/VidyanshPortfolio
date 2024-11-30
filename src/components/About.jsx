@@ -21,7 +21,7 @@ const About = () => {
             >
               <div className="relative z-10">
                 <img
-                  src="/images/mypic.jpg"
+                  src="https://images.pexels.com/photos/27660068/pexels-photo-27660068/free-photo-of-a-man-with-a-backpack-standing-on-a-mountain-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                   alt="Profile"
                   className="rounded-2xl shadow-2xl"
                 />
@@ -77,7 +77,7 @@ const About = () => {
                 className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <Download size={20} />
-                <span>Download Resume</span>
+                <span><a href="/docs/vidyansh-latest-resume.pdf" download="vidyansh-latest-resume.pdf">Download Resume</a></span>
               </motion.button>
             </motion.div>
           </div>

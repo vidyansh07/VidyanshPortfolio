@@ -34,12 +34,12 @@ const App = () => {
         <div className="container mx-auto max-w-5xl my-10">
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/blog" element={<BlogList />} />
+            {/* <Route path="/" element={<Home />} /> */}
+            {/* <Route path="/projects" element={<Projects />} /> */}
+            {/* <Route path="/blog" element={<BlogList />} /> */}
             {/* <Route path="/blog/:id" element={<BlogPost />} /> */}
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+            {/* <Route path="/about" element={<About />} /> */}
+            {/* <Route path="/contact" element={<Contact />} /> */}
           </Routes>
           <GlobalStyles />
         </div>
