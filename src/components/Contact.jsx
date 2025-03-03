@@ -140,9 +140,7 @@ const Contact = () => {
             </motion.div>
           </div>
         </div>
-      <div className="">
-        <a href="https://linkedin.com/vidyash">linkedin</a>
-      </div>
+
         {/* Popup Message */}
         <AnimatePresence>
           {popupMessage && (
