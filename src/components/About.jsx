@@ -77,7 +77,7 @@ const About = () => {
                 className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <Download size={20} />
-                <span><a href="/docs/vidyansh-latest-resume.pdf" download="vidyansh-latest-resume.pdf">Download Resume</a></span>
+                <span><a href="https://drive.google.com/file/d/1G5gcUm7uAAm5HvuJ3J6G3h8tCX9ev1Ey/view?usp=sharing" className="text-white">Download Resume</a></span>
               </motion.button>
             </motion.div>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
@@ -9,15 +9,33 @@ const Contact = () => {
       message: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
-  
+    const [popupMessage, setPopupMessage] = useState(null);
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       setIsSubmitting(true);
-      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      const response = await fetch("https://formspree.io/f/mbldnpyq", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setPopupMessage("Success! Your message has been sent.");
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setPopupMessage("Oops! Something went wrong. Please try again.");
+      }
+
       setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
+
+      // Hide popup after 5 seconds
+      setTimeout(() => setPopupMessage(null), 5000);
     };
-  
+
     return (
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
@@ -32,7 +50,7 @@ const Contact = () => {
               Have a project in mind? Let's discuss how we can bring your ideas to life.
             </p>
           </motion.div>
-  
+
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -42,7 +60,7 @@ const Contact = () => {
             >
               {[
                 { icon: <Mail />, title: 'Email', content: 'vidyansht@gmail.com' },
-                { icon: <Phone />, title: 'Phone', content: '+91 8930019360' },
+                { icon: <Phone />, title: 'Phone', content: '+91 8960108225' },
                 { icon: <MapPin />, title: 'Location', content: 'MMDU, mullana, Ambala' }
               ].map((item, index) => (
                 <motion.div
@@ -62,7 +80,7 @@ const Contact = () => {
                 </motion.div>
               ))}
             </motion.div>
-  
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -122,8 +140,33 @@ const Contact = () => {
             </motion.div>
           </div>
         </div>
+      <div className="">
+        <a href="https://linkedin.com/vidyash">linkedin</a>
+      </div>
+        {/* Popup Message */}
+        <AnimatePresence>
+          {popupMessage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+            >
+              <motion.div
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.8 }}
+                className="bg-white text-black px-6 py-4 rounded-lg shadow-lg text-center"
+              >
+                <p className={`text-lg font-medium ${popupMessage.includes("Success") ? "text-green-400" : "text-red-400"}`}>
+                  {popupMessage}
+                </p>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
     );
-  };
+};
 
 export default Contact;
