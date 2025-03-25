@@ -1,10 +1,6 @@
-fastapi 
+fastapi
 uvicorn==0.27.0
 sqlalchemy==2.0.25
 pydantic
 python-multipart
 email-validator
-# For SQLite (default)
-# For MySQL on PythonAnywhere, also add:
-# pymysql==1.1.0
-# mysqlclient==2.2.1
