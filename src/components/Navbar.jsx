@@ -1,69 +1,140 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  // const menuItems = [
-  //   { path: "/", label: "Home" },
-  //   { path: "/projects", label: "Projects" },
-  //   { path: "/blog", label: "Blog" },
-  //   { path: "/about", label: "About" },
-  //   { path: "/contact", label: "Contact" },
-  // ];
+  const menuItems = [
+    { path: "/projects", label: "Projects" },
+    { path: "/blogs", label: "Blog" },
+    {path: "/contact", label: "Contact"},
+    {path: "/about", label: "About"}
+  ];
+
+  // Variants for menu animations
+  const menuVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: -20,
+      transition: {
+        duration: 0.3
+      }
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const menuItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 }
+  };
 
   return (
-    <div className="flex items-center justify-between px-2 xl:px-0">
-      <Link className="font-bold" to="/">
-        vidyansh tripathi
-      </Link>
-      {/* <div className="hidden md:flex items-center space-x-6">
-        {menuItems.map((item) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className="text-gray-600 hover:text-black transition-colors"
-          >
-            {item.label}
-          </Link>
-        ))}
-      </div> */}
-      <div className="relative md:hidden">
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="m-1 px-3 py-2 rounded-xl flex items-center justify-center border border-gray-50 bg-gray-100 hover:bg-gray-200 hover:border-gray-100 active:border-gray-300 flex items-center gap-x-2"
+    <motion.nav
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm"
+    >
+      <div className="container mx-auto max-w-5xl px-4 py-6 flex items-center justify-between">
+        {/* Logo */}
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 15 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <Link 
+            to="/" 
+            className="text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors"
           >
-            <path
-              d="M1.5 3C1.22386 3 1 3.22386 1 3.5C1 3.77614 1.22386 4 1.5 4H13.5C13.7761 4 14 3.77614 14 3.5C14 3.22386 13.7761 3 13.5 3H1.5ZM1 7.5C1 7.22386 1.22386 7 1.5 7H13.5C13.7761 7 14 7.22386 14 7.5C14 7.77614 13.7761 8 13.5 8H1.5C1.22386 8 1 7.77614 1 7.5ZM1 11.5C1 11.2239 1.22386 11 1.5 11H13.5C13.7761 11 14 11.2239 14 11.5C14 11.7761 13.7761 12 13.5 12H1.5C1.22386 12 1 11.7761 1 11.5Z"
-              fill="currentColor"
-              fillRule="evenodd"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-          Menu
-        </button>
-        {isMenuOpen && (
-          <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-            {/* {menuItems.map((item) => (
+            vidyansh tripathi
+          </Link>
+        </motion.div>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-6">
+          {menuItems.map((item) => (
+            <motion.div
+              key={item.path}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <Link
-                key={item.path}
                 to={item.path}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                onClick={() => setIsMenuOpen(false)}
+                className={`
+                  text-gray-600 
+                  hover:text-blue-600 
+                  transition-colors 
+                  ${location.pathname === item.path 
+                    ? 'text-blue-600 font-semibold' 
+                    : ''
+                  }
+                `}
               >
                 {item.label}
               </Link>
-            ))} */}
-          </div>
-        )}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="md:hidden">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-gray-600 flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {!isMenuOpen && "Menu"}
+          </motion.button>
+
+          {/* Mobile Menu Dropdown */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={menuVariants}
+                className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden"
+              >
+                {menuItems.map((item) => (
+                  <motion.div
+                    key={item.path}
+                    variants={menuItemVariants}
+                  >
+                    <Link
+                      to={item.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`
+                        block px-4 py-2 
+                        ${location.pathname === item.path 
+                          ? 'bg-blue-50 text-blue-600 font-semibold' 
+                          : 'text-gray-700 hover:bg-gray-100'
+                        }
+                        transition-colors
+                      `}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
-    </div>
+    </motion.nav>
   );
 };
+
 export default Navbar;

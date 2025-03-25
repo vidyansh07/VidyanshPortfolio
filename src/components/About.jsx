@@ -10,7 +10,7 @@ const About = () => {
     ];
   
     return (
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id="about">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
