@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { image } from 'framer-motion/client';
-// import { ExternalLink, GitHub, ArrowRight } from 'lucide-react';
+// import { image } from 'framer-motion/client';
+import { ArrowRight } from 'lucide-react';
 
 const ProjectCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -137,8 +137,10 @@ const SelectedWork = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          See More Projects
-          {/* <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" /> */}
+          Show More Projects
+          <a href="https://github.com/vidyansh07" target="_blank" rel="noopener noreferrer">
+            <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+          </a>
         </motion.button>
       </motion.div>
     </section>

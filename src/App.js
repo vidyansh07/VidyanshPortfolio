@@ -1,8 +1,10 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Projects from "./components/Projects";
-// import BlogList from "./components/BlogList";
-// import BlogPost from "./components/BlogPost";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { motion } from "framer-motion";
+
+import BlogListPage from "./components/BlogListPage";
+import BlogDetailsPage from "./components/BlogDetailsPage";
+import BlogAdminPage from "./components/BlogAdminPage";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import SelectedWork from "./components/SelectedWork";
@@ -11,10 +13,9 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import GlobalStyles from "./components/GlobalStyles";
 
-// Modified Navbar component with navigation links
 
 // Home page component
-const Home = () => {
+const Main = () => {
   return (
     <>
       <Hero />
@@ -29,22 +30,35 @@ const Home = () => {
 // Main App component with routing
 const App = () => {
   return (
-    <BrowserRouter>
-      <main className="__className_8d54fb">
-        <div className="container mx-auto max-w-5xl my-10">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/projects" element={<Projects />} /> */}
-            {/* <Route path="/blog" element={<BlogList />} /> */}
-            {/* <Route path="/blog/:id" element={<BlogPost />} /> */}
-            {/* <Route path="/about" element={<About />} /> */}
-            {/* <Route path="/contact" element={<Contact />} /> */}
-          </Routes>
-          <GlobalStyles />
-        </div>
-      </main>
-    </BrowserRouter>
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex-grow"
+        >
+          <div className="container mx-auto max-w-5xl my-10">
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/blogs" element={<BlogListPage />} />
+              <Route path="/blog/:id" element={<BlogDetailsPage />} />
+              <Route path="/hacking" element={<BlogAdminPage />} />
+              <Route path="/projects" element={<SelectedWork />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+            <GlobalStyles />
+          </div>
+        </motion.main>
+        <footer className="bg-gray-100 py-6 text-center">
+          <p className="text-gray-600">
+            © {new Date().getFullYear()} My Blog. All rights reserved.
+          </p>
+        </footer>
+      </div>
+    </Router>
   );
 };
 

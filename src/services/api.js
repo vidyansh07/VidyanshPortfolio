@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/api";
+const API_URL = "http://localhost:8000";
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -9,35 +9,6 @@ export const api = axios.create({
   },
 });
 
-// Project API calls
-export const projectApi = {
-  getProjects: async (params) => {
-    const { data } = await api.get("/projects", { params });
-    return data;
-  },
-
-  getProject: async (id) => {
-    const { data } = await api.get(`/projects/${id}`);
-    return data;
-  },
-
-  createProject: async (project) => {
-    const { data } = await api.post("/projects", project);
-    return data;
-  },
-
-  updateProject: async (id, project) => {
-    const { data } = await api.put(`/projects/${id}`, project);
-    return data;
-  },
-
-  deleteProject: async (id) => {
-    const { data } = await api.delete(`/projects/${id}`);
-    return data;
-  },
-};
-
-// Blog API calls
 export const blogApi = {
   getBlogs: async (params) => {
     const { data } = await api.get("/blogs", { params });
@@ -61,6 +32,21 @@ export const blogApi = {
 
   deleteBlog: async (id) => {
     const { data } = await api.delete(`/blogs/${id}`);
+    return data;
+  },
+
+  likeBlog: async (id) => {
+    const { data } = await api.post(`/blogs/${id}/like`);
+    return data;
+  },
+
+  getBlogComments: async (blogId) => {
+    const { data } = await api.get(`/blogs/${blogId}/comments`);
+    return data;
+  },
+
+  addComment: async (comment) => {
+    const { data } = await api.post("/comments", comment);
     return data;
   },
 };
